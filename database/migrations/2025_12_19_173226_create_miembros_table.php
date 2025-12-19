@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('miembros', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre_completo');
+            $table->string('cedula', 20)->unique();
+            $table->string('telefono', 20);
+            $table->string('tipo_membresia', 50);
+            $table->date('fecha_inscripcion');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->boolean('esta_activo')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
